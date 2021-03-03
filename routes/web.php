@@ -12,9 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $hello = 'Hello Wolrd';
+    return view('welcome', compact('hello'));
 });
 
-Route::get('/test', function () {
-    return "Wilder";
-}
