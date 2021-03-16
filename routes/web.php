@@ -16,3 +16,9 @@ Route::get('/', function () {
     return view('welcome', compact('hello'));
 });
 
+Route::get('/model', function(){
+    $products = \App\Product::all();
+
+    return $products;
+});
+
