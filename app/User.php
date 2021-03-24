@@ -26,6 +26,8 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
+
+        // $hidden remove da colection (retorno) os campos especificados da consulta.
     ];
 
     /**
@@ -35,5 +37,31 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+
+        // $casts altera o tipo da coluna.
     ];
+
+    public function store()
+    {
+        return $this->hasOne(Store::class);
+    }
 }
+
+
+
+
+ // ================== RELAÇÃO ENTRE MODELS ================
+// 1:1 - Um para Um (Usuário e Loja)
+// Ex: Um usuário poder uma loja e uma loja pode pertencer á Um usuário.
+
+// Relação = hasOne e belongsTo
+
+// 1:N - Um para muitos (Loja e Produtos)
+// Ex: Uma loja pode ter muitos produtos e um produto pode pertencer á uma loja.
+
+// Relação = hasMany e belongsTo
+
+// N:N - Muitos para Muitos (Produtos e Categorias)
+// Muitos produtos podem ter muitas categorias e Muitas categorias podem pertencer á muitos produtos.
+
+// Relação = belongsToMany
