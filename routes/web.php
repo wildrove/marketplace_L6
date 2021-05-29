@@ -61,6 +61,7 @@ Route::get('/model', function(){
         dd($user);  
     */
 
+   /*
     $user = \App\User::find(42);
     $user->update([
         'name' => 'Atualizando com Mass update'
@@ -70,8 +71,96 @@ Route::get('/model', function(){
     
     return \App\User::find(42);
 
+    */
+
     // FIM MASS ASSIGNMENT & MASS UPDATE //
 
-   
+    /* ===================================== */
+
+    // Queries Relacionais //
+
+        //$user = \App\User::find(4);
+
+       // dd($user->store()->count()); // O objeto único (Store) se for collection de Dados (Objetos)
+
+        // Pegar os produtos de uma loja?
+        //$loja = \App\Store::find(1);
+        //return $loja->products()->where('id', 9)->get();
+
+        //Pegar as lojas de uma categoria de uma loja?
+       // $categoria = \App\Category::find(1);
+       // $categoria->products;
+
+
+       /* ================================== */
+
+       // INSERINDO RELAÇÕES //
+
+       //Criar uma loja para um Usuário
+
+        /*
+            $user = \App\User::find(10);
+            $store = $user->store()->create([
+                'name' => 'Loja teste',
+                'description' => 'Loja teste de produtos de informatica',
+                'mobile_phone' => 'XX-XXXX-XXXX',
+                'phone' => 'XX-XXXX-XXXX',
+                'slug' => 'loja-teste-de-produtos-de-informatica'
+            ]);
+
+            dd($store);
+        */
+
+       // Criar um produto para uma lojas
+        
+       /*
+            $store = \App\Store::find(41);
+            $product = $store->products()->create([
+                'name' => 'Notebook Intel',
+                'description' => 'Core I5 10GB',
+                'body' => 'Qualquer Coisa',
+                'price' => 2999.90,
+                'slug' => 'notebook-intel',
+            ]);
+
+            dd($product);
+        
+            */
+
+       // Criar uma categoria para um produto
+        /*
+            $category = \App\Category::create([
+                'name' => 'Games',
+                'description' => null,
+                'slug' => 'games',
+            ]);
+
+            $category = \App\Category::create([
+                'name' => 'Notebooks',
+                'description' => null,
+                'slug' => 'notebooks',
+            ]);
+
+            return \App\Category::all();
+
+           //dd($category);
+
+           //return \App\User::all();
+        */
+
+        // Adicionar uma categoria para um produto //
+
+       /*
+        $product = \App\Product::find(41);
+
+        dd($product->categories()->sync([2]));
+
+        */
+        
+       /*
+        $product = \App\Product::find(41);
+
+        return $product->categories;
+      */  
 });
 
