@@ -27,7 +27,7 @@ class StoreController extends Controller
         $user = \App\User::find($data['user']);
         $store = $user->store()->create($data);
 
-        return $store;
+        return redirect('/admin/stores');
     }
 
     public function edit($store)
@@ -49,8 +49,7 @@ class StoreController extends Controller
     public function destroy($store)
     {
         $store = \App\Store::find($store);
-
-        $store->delete($store);
+        $store->delete();
 
         return redirect('/admin/stores');
     }
