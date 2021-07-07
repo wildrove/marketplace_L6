@@ -38,6 +38,9 @@
                             <form action="{{route('logout')}}" method="post" class="d-lg-none logout">
                                 @csrf    
                             </form>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link">{{auth()->user()->name}}</span>
                         </li>    
                     </ul>
                 </div>
