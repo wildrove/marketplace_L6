@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
-@section('content') 
+@section('content')
     <h1>Criar Produto</h1>
     <form action="{{route('admin.products.store')}}" method="post">
         <!-- <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
 
-        @csrf 
-        @method('PUT')
+        @csrf
 
         <div class="form-group">
             <label for="" name="">Produto</label>
@@ -45,5 +44,5 @@
         <div class="form-group">
             <button class="btn btn-success btn-lg mt-3" type="submit">Criar Produto</button>
         </div>
-    </form>   
+    </form>
 @endsection

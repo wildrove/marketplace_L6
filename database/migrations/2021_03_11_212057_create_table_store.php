@@ -14,7 +14,7 @@ class CreateTableStore extends Migration
     public function up()
     {
         Schema::create('stores', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
 
             $table->string('name');
@@ -22,7 +22,7 @@ class CreateTableStore extends Migration
             $table->string('phone');
             $table->string('mobile_phone');
             $table->string('slug');
-            
+
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
