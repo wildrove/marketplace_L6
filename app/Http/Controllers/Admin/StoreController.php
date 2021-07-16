@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreRequest;
+
 class StoreController extends Controller
 {
     public function index()
@@ -24,8 +25,8 @@ class StoreController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->all();
-        $user = @auth()->user();
-        
+        $user = auth()->user();
+
         $store = $user->store()->create($data);
 
         flash('Loja Criada com Sucesso !')->success();
