@@ -9,29 +9,42 @@
         
         <div class="form-group">
             <label for="" name="">Produto</label>
-            <input class="form-control" type="text" name="name" value="{{$product->name}}">
+            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{$product->name}}">
+            @error('name')
+                <span class="invalid-feedback">{{$message}}</span>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="" name="">Descrição</label>
-            <input class="form-control" type="text" name="description" value="{{$product->description}}">
+            <input class="form-control @error('description') is-invalid @enderror" type="text" name="description" value="{{$product->description}}">
+            @error('description')
+                <span class="invalid-feedback">{{$message}}</span>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="" name="">Preço</label>
-            <input class="form-control" type="text" name="price" value="{{$product->price}}">
+            <input class="form-control @error('price') is-invalid @enderror" type="text" name="price" value="{{$product->price}}">
+            @error('price')
+                <span class="invalid-feedback">{{$message}}</span>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="" name="">Conteúdo</label>
-            <textarea class="form-control" name="body"  cols="30" rows="10">
+            <textarea class="form-control @error('body') is-invalid @enderror" name="body"  cols="30" rows="10">
                 {{$product->body}}
             </textarea>
+            @error('body')
+                <span class="invalid-feedback">{{$message}}</span>
+            @enderror
         </div>
 
         <div class="form-group">
-            <label for="" name="">Slug</label>
+            <label for="slug" name="slug">Slug</label>
             <input class="form-control" type="text" name="slug" value="{{$product->slug}}">
+            
         </div>
 
         <div class="form-group">
