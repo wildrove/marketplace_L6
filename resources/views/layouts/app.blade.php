@@ -20,33 +20,35 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 @auth <!--  verifica se o usuário está logado, se não não exibe a navbar -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item ">
-                        <a class="nav-link @if(request()->is('admin/stores*')) active @endif" aria-current="page" href="{{route('admin.stores.index')}}">Lojas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @if(request()->is('admin/products*')) active @endif"  href="{{route('admin.products.index')}}">Produtos</a>
-                    </li>    
-                </ul>
-                <div class="d-flex my-2 my-lg-0">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="event.preventDefault(); 
-
-                                            document.querySelector('form.logout').submit();">Sair</a>
-                                            
-                            <form action="{{route('logout')}}" method="post" class="d-lg-none logout">
-                                @csrf    
-                            </form>
+                        <li class="nav-item ">
+                            <a class="nav-link @if(request()->is('admin/stores*')) active @endif" aria-current="page" href="{{route('admin.stores.index')}}">Lojas</a>
                         </li>
                         <li class="nav-item">
-                            <span class="nav-link">{{auth()->user()->name}}</span>
-                        </li>    
+                            <a class="nav-link @if(request()->is('admin/products*')) active @endif"  href="{{route('admin.products.index')}}">Produtos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.categories.index')}}" class="@if(request()->is('admin/categories*')) active @endif nav-link">Categorias</a>
+                        </li>  
                     </ul>
-                </div>
-            </div>
-            @endauth
+                    <div class="d-flex my-2 my-lg-0">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" onclick="event.preventDefault(); 
 
+                                                document.querySelector('form.logout').submit();">Sair</a>
+                                                
+                                <form action="{{route('logout')}}" method="post" class="d-lg-none logout">
+                                    @csrf    
+                                </form>
+                            </li>
+                            <li class="nav-item">
+                                <span class="nav-link">{{auth()->user()->name}}</span>
+                            </li>    
+                        </ul>
+                    </div>
+                @endauth
+            </div>
         </div>
     </nav>
     <div class="container">
