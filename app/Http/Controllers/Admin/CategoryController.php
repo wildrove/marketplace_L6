@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Category;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -22,9 +23,9 @@ class CategoryController extends Controller
      }
     public function index()
     {
-        $hello = 'Olá Categoria';
+        $categories = $this->category->paginate(10);
 
-        return view('admin.categories.index', compact('hello'));
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -34,7 +35,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -43,9 +44,16 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $category = $this->category->create($data);
+
+        flash('Category Criada com Sucesso !')->success();
+
+        return redirect()->route('admin.categories.index');
+
     }
 
     /**
@@ -67,7 +75,9 @@ class CategoryController extends Controller
      */
     public function edit($category)
     {
-        //
+        $category = $this->category->findOrFail($category);
+
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -77,9 +87,16 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $category)
+    public function update(CategoryRequest $request, $category)
     {
-        //
+        $data = $request->all();
+        $category = $this->category->find($category);
+        
+        $category->update($data);
+
+        flash('Categoria Atualizada com Sucesso !')->success();
+
+        return redirect()->route('admin.categories.index');
     }
 
     /**
@@ -90,6 +107,13 @@ class CategoryController extends Controller
      */
     public function destroy($category)
     {
-        //
+        $category = $this->category->find($category);
+
+        $category->delete($category);
+
+        flash('Categoria Removida com Sucesso !');
+
+        return redirect()->route('admin.categories.index');
+
     }
 }
