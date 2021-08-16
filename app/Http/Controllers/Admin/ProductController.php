@@ -34,6 +34,7 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
+
         $data = $request->all();
 
         $store = auth()->user()->store;
