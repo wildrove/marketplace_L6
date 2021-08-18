@@ -34,13 +34,17 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-
         $data = $request->all();
 
         $store = auth()->user()->store;
         $product = $store->products()->create($data);
         $product->categories()->sync($data['categories']);
 
+        if($request->hasFile('photos')){
+            $images = $this->uploadedImage($request, 'image');
+
+            $product->photos()->createMany($images);
+        }
         flash('Produto Criado com Sucesso !')->success();
         return redirect()->route('admin.products.index');
 
@@ -61,6 +65,7 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, $product)
     {
+        
         $data = $request->all();
 
         $product = $this->product->find($product);
@@ -78,5 +83,18 @@ class ProductController extends Controller
 
         flash('Produto Removido com Sucesso !')->success();
         return redirect()->route('admin.products.index');
+    }
+
+    private function uploadedImage(Request $request, $imageColumn)
+    {
+        $images = $request->file('photos');
+
+        $uploadedImage = [];
+
+        foreach($images as $image){
+           $uploadedImage[] = [$imageColumn => $image->store('products', 'public')];
+        }
+
+        return $uploadedImage;
     }
 }
