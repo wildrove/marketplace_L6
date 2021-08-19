@@ -8,11 +8,16 @@ use App\Http\Requests\StoreRequest;
 
 class StoreController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('user.has.store')->only(['create', 'store']);
+    }
+
     public function index()
     {
-        $stores = \App\Store::paginate(10);
-
-        return view('admin.stores.index', compact('stores'));
+        $store = auth()->user()->store;
+       
+        return view('admin.stores.index', compact('store'));
     }
 
     public function create()
