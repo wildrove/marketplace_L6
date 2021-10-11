@@ -12,7 +12,7 @@
             <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{old('name')}}">
             @error('name')
                 <span class="invalid-feedback">{{$message}}</span>
-            @enderror    
+            @enderror
         </div>
 
         <div class="form-group">
@@ -20,7 +20,7 @@
             <input class="form-control @error('description') is-invalid @enderror" type="text" name="description" value="{{old('description')}}">
             @error('description')
                 <span class="invalid-feedback">{{$message}}</span>
-            @enderror    
+            @enderror
         </div>
 
         <div class="form-group">
@@ -50,14 +50,17 @@
 
         <div class="form-group">
             <label for="file">Fotos do Produto</label>
-            <input type="file" class="form-control" name="photos[]" multiple>
+            <input type="file" class="form-control @error('photos') is-invalid @enderror" name="photos[]" multiple>
+            @error('photos')
+                <span class="invalid-feedback">{{$message}}</span>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="" name="">Slug</label>
             <input class="form-control" type="text" name="slug">
         </div>
-        
+
         <div class="form-group">
             <button class="btn btn-success btn-lg mt-3" type="submit">Criar Produto</button>
         </div>

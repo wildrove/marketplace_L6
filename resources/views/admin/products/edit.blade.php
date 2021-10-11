@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('content') 
+@section('content')
     <h1>Atualizar Produto</h1>
     <form action="{{route('admin.products.update', ['product' => $product->id])}}" method="POST" enctype="multipart/form-data">
-    
-        @csrf 
+
+        @csrf
         @method('PUT')
-        
+
         <div class="form-group">
             <label for="" name="">Produto</label>
             <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{$product->name}}">
@@ -48,21 +48,26 @@
                     <option value="{{$category->id}}"
                         @if($product->categories->contains($category))
                         selected
-                        @endif   
-                    >{{$category->name}}</option>  
+                        @endif
+                    >{{$category->name}}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="form-group">
             <label for="file">Fotos do Produto</label>
-            <input type="file" class="form-control" name="photos[]" multiple>
+            <input type="file" class="form-control @error('photos') is-invalid @enderror" name="photos[]" multiple>
+            @error('photos')
+                <span class="invalid-feedback">
+                    {{$message}}
+                </span>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="slug" name="slug">Slug</label>
             <input class="form-control" type="text" name="slug" value="{{$product->slug}}">
-            
+
         </div>
 
         <div class="form-group">
@@ -71,7 +76,7 @@
     </form>
 
     <hr>
-    
+
     <div class="row">
         @foreach($product->photos as $photo)
         <div class="col-4 text-center">
