@@ -2,7 +2,7 @@
 
 @section('content') 
     <h1>Atualizar Produto</h1>
-    <form action="{{route('admin.products.update', ['product' => $product->id])}}" method="POST">
+    <form action="{{route('admin.products.update', ['product' => $product->id])}}" method="POST" enctype="multipart/form-data">
     
         @csrf 
         @method('PUT')
@@ -55,6 +55,11 @@
         </div>
 
         <div class="form-group">
+            <label for="file">Fotos do Produto</label>
+            <input type="file" class="form-control" name="photos[]" multiple>
+        </div>
+
+        <div class="form-group">
             <label for="slug" name="slug">Slug</label>
             <input class="form-control" type="text" name="slug" value="{{$product->slug}}">
             
@@ -63,5 +68,20 @@
         <div class="form-group">
             <button class="btn btn-success btn-lg mt-3" type="submit">Atualizar Produto</button>
         </div>
-    </form>   
+    </form>
+
+    <hr>
+    
+    <div class="row">
+        @foreach($product->photos as $photo)
+        <div class="col-4 text-center">
+            <img src="{{asset('storage/' . $photo->image)}}" alt="" class="img-fluid">
+            <form action="{{route('admin.photo.remove')}}" method="post">
+                @csrf
+                <input type="hidden" name="photoName" value="{{$photo->image}}">
+                <button type="submit" class="btn btn-lg btn-danger">REMOVER</button>
+            </form>
+        </div>
+        @endforeach
+    </div>
 @endsection
