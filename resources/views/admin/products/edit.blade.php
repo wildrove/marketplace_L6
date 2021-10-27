@@ -2,7 +2,7 @@
 
 @section('content') 
     <h1>Atualizar Produto</h1>
-    <form action="{{route('admin.products.update', ['product' => $product->id])}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('admin.products.update', ['product' => $product->id])}}" method="post" enctype="multipart/form-data">
     
         @csrf 
         @method('PUT')
@@ -56,7 +56,10 @@
 
         <div class="form-group">
             <label for="file">Fotos do Produto</label>
-            <input type="file" class="form-control" name="photos[]" multiple>
+            <input type="file" name="photos[]"  class="form-control @error('photos.*') is-invalid @enderror" multiple>
+            @error('photos.*')
+                <span class="invalid-feedback">{{$message}}</span>
+            @enderror
         </div>
 
         <div class="form-group">

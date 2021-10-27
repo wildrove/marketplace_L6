@@ -33,7 +33,10 @@
             </p>
             
             <label for="file">Fotos da Loja</label>
-            <input type="file" class="form-control" name="logo" multiple>
+            <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" multiple>
+            @error('logo')
+                <span class="invalid-feedback">{{$message}}</span>
+            @enderror
         </div>
 
 
