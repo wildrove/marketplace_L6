@@ -44,14 +44,7 @@
             <span class="invalid-feedback">{{$message}}</span>
         @enderror
         </div>
-
-        <div class="form-group">
-            <label for="" name="">Slug</label>
-            <input class="form-control @error('slug') is-invalid @enderror" type="text" name="slug" value="{{old('slug')}}">
-            @error('slug')
-                <span class="invalid-feedback">{{$message}}</span>
-            @enderror
-        </div>
+        
         <div class="form-group">
             <button class="btn btn-success btn-lg mt-3" type="submit">Criar Loja</button>
         </div>

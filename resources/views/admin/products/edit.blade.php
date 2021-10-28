@@ -63,12 +63,6 @@
         </div>
 
         <div class="form-group">
-            <label for="slug" name="slug">Slug</label>
-            <input class="form-control" type="text" name="slug" value="{{$product->slug}}">
-            
-        </div>
-
-        <div class="form-group">
             <button class="btn btn-success btn-lg mt-3" type="submit">Atualizar Produto</button>
         </div>
     </form>
