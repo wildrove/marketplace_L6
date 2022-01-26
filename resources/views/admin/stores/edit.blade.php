@@ -35,14 +35,8 @@
             <label for="file">Fotos da Loja</label>
             <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" multiple>
             @error('logo')
-                <span class="invalid-feedback" role="alert">{{$message}}<span>
+                <span class="invalid-feedback">{{$message}}</span>
             @enderror
-        </div>
-
-
-        <div class="form-group">
-            <label for="" name="">Slug</label>
-            <input class="form-control" type="text" name="slug" value="{{$store->slug}}">
         </div>
 
         <div class="form-group">

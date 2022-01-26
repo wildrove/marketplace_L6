@@ -41,17 +41,10 @@
             <label for="file">Fotos da Loja</label>
             <input type="file" class="form-control @error('logo') is-invalid @enderror" name="logo" multiple>
             @error('logo')
-                <span class="invalid-feedback" role="alert">{{$message}}<span>
-            @enderror
+            <span class="invalid-feedback">{{$message}}</span>
+        @enderror
         </div>
 
-        <div class="form-group">
-            <label for="" name="">Slug</label>
-            <input class="form-control @error('slug') is-invalid @enderror" type="text" name="slug" value="{{old('slug')}}">
-            @error('slug')
-                <span class="invalid-feedback">{{$message}}</span>
-            @enderror
-        </div>
         <div class="form-group">
             <button class="btn btn-success btn-lg mt-3" type="submit">Criar Loja</button>
         </div>

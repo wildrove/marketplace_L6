@@ -3,7 +3,7 @@
 @section('content')
     @if(!$store)
         <a href="{{route('admin.stores.create')}}" class="btn btn-sm btn-success mt-5 mb-3 justify-content-right">CRIAR LOJA</a>
-    @endif
+    @else
     <table class="table table-striped">
         <thead>
             <tr>
@@ -33,4 +33,5 @@
             </tr>
         </tbody>
     </table>
+    @endif
 @endsection

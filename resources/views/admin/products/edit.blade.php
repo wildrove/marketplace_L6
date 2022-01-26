@@ -2,9 +2,15 @@
 
 @section('content')
     <h1>Atualizar Produto</h1>
+<<<<<<< HEAD
     <form action="{{route('admin.products.update', ['product' => $product->id])}}" method="POST" enctype="multipart/form-data">
 
         @csrf
+=======
+    <form action="{{route('admin.products.update', ['product' => $product->id])}}" method="post" enctype="multipart/form-data">
+
+        @csrf
+>>>>>>> 77b1edfd8686c812444110e03e229b69c170a61b
         @method('PUT')
 
         <div class="form-group">
@@ -56,18 +62,10 @@
 
         <div class="form-group">
             <label for="file">Fotos do Produto</label>
-            <input type="file" class="form-control @error('photos') is-invalid @enderror" name="photos[]" multiple>
-            @error('photos')
-                <span class="invalid-feedback">
-                    {{$message}}
-                </span>
+            <input type="file" name="photos[]"  class="form-control @error('photos.*') is-invalid @enderror" multiple>
+            @error('photos.*')
+                <span class="invalid-feedback">{{$message}}</span>
             @enderror
-        </div>
-
-        <div class="form-group">
-            <label for="slug" name="slug">Slug</label>
-            <input class="form-control" type="text" name="slug" value="{{$product->slug}}">
-
         </div>
 
         <div class="form-group">
