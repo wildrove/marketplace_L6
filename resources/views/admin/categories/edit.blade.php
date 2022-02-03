@@ -13,7 +13,7 @@
             <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{$category->name}}">
             @error('name')
                 <span class="invalid-feedback">{{$message}}</span>
-            @enderror    
+            @enderror
         </div>
 
         <div class="form-group">
@@ -21,11 +21,6 @@
             <input class="form-control " type="text" name="description" value="{{$category->description}}">
         </div>
 
-        <div class="form-group">
-            <label for="" name="slug">Slug</label>
-            <input class="form-control" type="text" name="slug" value="{{$category->slug}}">
-        </div>
-        
         <div class="form-group">
             <button class="btn btn-success btn-lg mt-3" type="submit">Atualizar Categoria</button>
         </div>

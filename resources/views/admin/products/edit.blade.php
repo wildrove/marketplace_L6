@@ -2,15 +2,9 @@
 
 @section('content')
     <h1>Atualizar Produto</h1>
-<<<<<<< HEAD
-    <form action="{{route('admin.products.update', ['product' => $product->id])}}" method="POST" enctype="multipart/form-data">
-
-        @csrf
-=======
     <form action="{{route('admin.products.update', ['product' => $product->id])}}" method="post" enctype="multipart/form-data">
 
         @csrf
->>>>>>> 77b1edfd8686c812444110e03e229b69c170a61b
         @method('PUT')
 
         <div class="form-group">
